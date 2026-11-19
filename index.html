@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VELMONT — не просто строительная компания</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0f1012;--paper:#efe9df;--brick:#9a4b3c;--gold:#C9A45C;--blue:#0c1a2e}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--blue);color:#eef0f4;font-family:Inter,system-ui,sans-serif;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:24px 4vw}
+nav b{font:600 20px 'Playfair Display';letter-spacing:.3em}
+nav span{font-size:11px;letter-spacing:.3em;color:#9aa3b2;text-transform:uppercase}
+.build{height:500vh;position:relative}
+.st{position:sticky;top:0;height:100vh;overflow:hidden;background:radial-gradient(80% 60% at 70% 100%,#1b2f4f,transparent),linear-gradient(#08111f,#0c1a2e 60%,#13243d)}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(120,160,220,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(120,160,220,.08) 1px,transparent 1px);background-size:48px 48px}
+#bp{position:absolute;right:6vw;bottom:0;height:92vh;width:auto;overflow:visible}
+#bp .ln{fill:none;stroke:#8fb4ff;stroke-width:1.2}
+#bp .fl{opacity:0}
+.copy{position:absolute;left:5vw;top:50%;transform:translateY(-50%);max-width:560px;z-index:5}
+.copy small{font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold)}
+.copy h1{font:400 clamp(40px,5.4vw,84px)/1.03 'Playfair Display';margin:22px 0}
+.copy h1 em{color:var(--gold)}
+.copy p{color:#a7b0bf;font-weight:300;line-height:1.7;max-width:420px}
+.stage-txt{position:absolute;inset:0;pointer-events:none}
+.stage-txt div{position:absolute;left:5vw;top:50%;transform:translateY(-40%);opacity:0;transition:opacity .8s,transform .8s;max-width:520px}
+.stage-txt div.on{opacity:1;transform:translateY(-50%)}
+.floors{position:absolute;left:5vw;bottom:6vh;font:400 70px/1 'Playfair Display';color:rgba(255,255,255,.9)}
+.floors small{font:400 11px Inter;letter-spacing:.3em;color:#7f8aa0;display:block;text-transform:uppercase;margin-top:6px}
+@media(max-width:800px){#bp{right:-30vw;opacity:.6}.copy{max-width:90vw}}
+/* interior split */
+.inside{background:var(--paper);color:var(--ink);padding:18vh 5vw}
+.inside h2{font:400 clamp(40px,6vw,96px)/1 'Playfair Display';max-width:900px}
+.inside h2 em{color:var(--brick)}
+.rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:10vh}
+.room{aspect-ratio:3/4;position:relative;overflow:hidden;clip-path:inset(100% 0 0 0);transition:clip-path 1.4s cubic-bezier(.7,0,.2,1)}
+.room.in{clip-path:inset(0 0 0 0)}
+.room .art{position:absolute;inset:0;transition:transform 6s}
+.room:hover .art{transform:scale(1.08)}
+.room h4{position:absolute;left:24px;bottom:22px;font:400 28px 'Playfair Display';color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.5)}
+.r1 .art{background:linear-gradient(180deg,#d9cbb6 0 62%,#b59a78 62%),#ccc}
+.r1 .art::before{content:"";position:absolute;left:12%;right:12%;bottom:30%;height:16%;background:#f5efe6;border-radius:30px 30px 6px 6px;box-shadow:0 20px 30px rgba(0,0,0,.2)}
+.r1 .art::after{content:"";position:absolute;left:30%;right:30%;top:12%;height:30%;border:10px solid #8a6a3c;background:linear-gradient(135deg,#9a4b3c,#e3b98a)}
+.r2 .art{background:linear-gradient(90deg,#1b2433 0 30%,#87a2c4 30% 70%,#1b2433 70%)}
+.r2 .art::before{content:"";position:absolute;left:30%;right:30%;top:0;bottom:45%;background:linear-gradient(#f6c48a,#c87a5c 60%,#4d3b4a)}
+.r2 .art::after{content:"";position:absolute;left:0;right:0;bottom:0;height:45%;background:linear-gradient(#a28766,#6e5640)}
+.r3 .art{background:radial-gradient(circle at 70% 30%,#fff6e0,transparent 40%),linear-gradient(#e8dccb,#c9b294)}
+.r3 .art::before{content:"";position:absolute;left:18%;bottom:18%;width:64%;height:24%;background:#3a2f28;border-radius:6px}
+.r3 .art::after{content:"";position:absolute;left:44%;top:0;width:12%;height:40%;background:linear-gradient(#C9A45C,#7a5a24);border-radius:0 0 50% 50%}
+@media(max-width:800px){.rooms{grid-template-columns:1fr}}
+.nums{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #cfc5b5;margin-top:14vh}
+.nums div{padding:40px 20px 0 0}
+.nums b{font:400 64px/1 'Playfair Display';color:var(--brick)}
+.nums span{display:block;margin-top:10px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#7a7266}
+@media(max-width:800px){.nums{grid-template-columns:1fr 1fr}}
+.cta{background:var(--ink);text-align:center;padding:20vh 5vw}
+.cta h3{font:italic 400 clamp(36px,6vw,90px)/1.05 'Playfair Display'}
+.cta a{display:inline-block;margin-top:40px;padding:18px 40px;border:1px solid var(--gold);color:var(--gold);text-decoration:none;font-size:12px;letter-spacing:.3em;text-transform:uppercase}
+.cta a:hover{background:var(--gold);color:var(--ink)}
+</style>
+</head>
+<body>
+<nav><b>VELMONT</b><span>Девелопмент · с 2009</span></nav>
+<section class="build" id="build"><div class="st">
+  <div class="grid"></div>
+  <svg id="bp" viewBox="0 0 400 800"></svg>
+  <div class="stage-txt">
+    <div class="on" data-s="0"><small style="font-size:11px;letter-spacing:.4em;color:#C9A45C;text-transform:uppercase">Velmont Group</small><h1 style="font:400 clamp(40px,5.4vw,84px)/1.03 'Playfair Display';margin:22px 0">Velmont — <em style="color:#C9A45C">не просто</em> строительная компания.</h1><p style="color:#a7b0bf;font-weight:300;line-height:1.7;max-width:420px">Мы строим дома, в которых хочется жить поколениями. Листайте — и здание вырастет у вас на глазах.</p></div>
+    <div data-s="1"><h1 style="font:400 clamp(36px,4.6vw,70px)/1.05 'Playfair Display'">Сначала — <em style="color:#C9A45C">чертёж.</em></h1><p style="color:#a7b0bf;margin-top:20px;line-height:1.7">Каждая линия выверена архитекторами из Милана и Москвы.</p></div>
+    <div data-s="2"><h1 style="font:400 clamp(36px,4.6vw,70px)/1.05 'Playfair Display'">Потом — <em style="color:#C9A45C">этажи.</em></h1><p style="color:#a7b0bf;margin-top:20px;line-height:1.7">Монолит, кирпич ручной формовки, панорамное остекление.</p></div>
+    <div data-s="3"><h1 style="font:400 clamp(36px,4.6vw,70px)/1.05 'Playfair Display'">И наконец — <em style="color:#C9A45C">свет в окнах.</em></h1><p style="color:#a7b0bf;margin-top:20px;line-height:1.7">Дом готов, когда в нём живут.</p></div>
+  </div>
+  <div class="floors"><span id="fl">0</span><small>этаж</small></div>
+</div></section>
+
+<section class="inside">
+  <h2>Внутри — <em>тишина,</em> свет и пространство.</h2>
+  <div class="rooms">
+    <div class="room r1"><div class="art"></div><h4>Гостиная</h4></div>
+    <div class="room r2"><div class="art"></div><h4>Вид на закат</h4></div>
+    <div class="room r3"><div class="art"></div><h4>Столовая</h4></div>
+  </div>
+  <div class="nums"><div><b data-n="17">0</b><span>лет на рынке</span></div><div><b data-n="42">0</b><span>дома сдано</span></div><div><b data-n="3200">0</b><span>семей живут</span></div><div><b data-n="0">0</b><span>сорванных сроков</span></div></div>
+</section>
+<section class="cta"><h3>Ваш будущий адрес<br>начинается здесь.</h3><a data-tl href="#">Выбрать квартиру</a></section>
+<script src="link.js"></script>
+<script>
+const svg=document.getElementById('bp'),NS='http://www.w3.org/2000/svg',FL=18;
+function el(t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);svg.appendChild(e);return e}
+// blueprint outline
+const outline=[el('path',{class:'ln',d:'M40 790 L40 140 L120 100 L120 60 L260 60 L260 100 L360 140 L360 790 Z'}),el('path',{class:'ln',d:'M0 790 L400 790'}),el('path',{class:'ln',d:'M200 60 L200 20 M180 20 L220 20'})];
+for(let i=0;i<FL;i++){outline.push(el('path',{class:'ln',d:`M40 ${790-i*36} L360 ${790-i*36}`,'stroke-opacity':.4}))}
+outline.forEach(p=>{const L=p.getTotalLength();p.style.strokeDasharray=L;p.style.strokeDashoffset=L;p.dataset.l=L});
+// solid floors
+const floors=[];for(let i=0;i<FL;i++){const y=790-(i+1)*36;const g=el('g',{class:'fl'});
+  const b=document.createElementNS(NS,'rect');Object.entries({x:40,y,width:320,height:36,fill:i%2?'#8f4637':'#9a4b3c',stroke:'#5d2a20','stroke-width':1}).forEach(([k,v])=>b.setAttribute(k,v));g.appendChild(b);
+  const wins=[];for(let w=0;w<6;w++){const r=document.createElementNS(NS,'rect');Object.entries({x:56+w*51,y:y+7,width:36,height:22,fill:'#1a2638',stroke:'#C9A45C','stroke-width':.8}).forEach(([k,v])=>r.setAttribute(k,v));g.appendChild(r);wins.push(r)}
+  const s=document.createElementNS(NS,'rect');Object.entries({x:36,y:y+33,width:328,height:3,fill:'#e9dfcf'}).forEach(([k,v])=>s.setAttribute(k,v));g.appendChild(s);
+  svg.appendChild(g);floors.push({g,wins,lit:wins.map(()=>Math.random())})}
+const roof=el('path',{d:'M40 142 L120 100 L120 60 L260 60 L260 100 L360 142 L360 142 L40 142',fill:'#2a3448',stroke:'#C9A45C',opacity:0});
+const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),seg=(p,a,b)=>clamp((p-a)/(b-a));
+function upd(){const r=document.getElementById('build').getBoundingClientRect(),p=clamp(-r.top/(r.height-innerHeight));
+  const d=seg(p,.05,.35);outline.forEach(o=>o.style.strokeDashoffset=o.dataset.l*(1-d));
+  const f=seg(p,.35,.75);let n=0;floors.forEach((F,i)=>{const k=clamp(f*FL-i);F.g.style.opacity=k;F.g.style.transform=`translateY(${(1-k)*-40}px)`;if(k>0)n=i+1});
+  roof.setAttribute('opacity',seg(p,.72,.78));document.getElementById('fl').textContent=n;
+  const lit=seg(p,.8,.98);floors.forEach(F=>F.wins.forEach((w,j)=>w.setAttribute('fill',F.lit[j]<lit?'#ffd58a':'#1a2638')));
+  const s=p<.05?0:p<.35?1:p<.78?2:3;document.querySelectorAll('.stage-txt div').forEach(x=>x.classList.toggle('on',+x.dataset.s===s))}
+addEventListener('scroll',upd,{passive:true});upd();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const t=e.target;t.classList.add('in');
+  if(t.dataset.n!==undefined){const n=+t.dataset.n;let s;const go=ts=>{s=s||ts;const k=Math.min((ts-s)/1600,1);t.textContent=Math.round(n*(1-Math.pow(1-k,3))).toLocaleString('ru');if(k<1)requestAnimationFrame(go)};requestAnimationFrame(go)}
+  io.unobserve(t)}),{threshold:.3});
+document.querySelectorAll('.room,[data-n]').forEach((x,i)=>{x.style.transitionDelay=(i%3)*.15+'s';io.observe(x)});
+</script>
+</body>
+</html>
